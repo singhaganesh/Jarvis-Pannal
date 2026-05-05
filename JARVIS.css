@@ -373,7 +373,8 @@ main{
 input:not([type="checkbox"]):not([type="radio"]),
 select,
 .custom-select-trigger {
-  padding: 12px 16px;
+  padding: 0 16px; /* Removed vertical padding, relying on height + flex/line-height */
+  height: 48px;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   font-size: 14px;
@@ -382,8 +383,15 @@ select,
   color: #1f2937;
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
   width: 100%; /* Default to full width for cards */
-  display: block;
+  display: flex;
+  align-items: center;
   margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+/* Ensure text inside inputs is centered */
+input:not([type="checkbox"]):not([type="radio"]) {
+  line-height: normal;
 }
 
 /* Override for zcontrols to maintain horizontal layout */
@@ -413,11 +421,21 @@ select:focus, input:focus, .custom-select-wrapper.open .custom-select-trigger {
 
 
 
-/* Custom Select Dropdown Styling */
 .custom-select-wrapper {
   position: relative;
+  display: block; /* Full width by default to match inputs */
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+/* Override for zcontrols and inline-group to maintain horizontal layout */
+.zcontrols .custom-select-wrapper,
+.inline-group .custom-select-wrapper {
+  width: auto;
+  flex: 1;
   display: inline-block;
   vertical-align: middle;
+  margin-bottom: 0;
 }
 
 .custom-select-wrapper.open {
@@ -438,7 +456,6 @@ select:focus, input:focus, .custom-select-wrapper.open .custom-select-trigger {
   z-index: 1001;
 }
 
-
 /* Ensure full width in zcontrols on mobile still works */
 @media (max-width: 480px) {
   .zcontrols .custom-select-wrapper {
@@ -446,31 +463,16 @@ select:focus, input:focus, .custom-select-wrapper.open .custom-select-trigger {
   }
 }
 
-
 .custom-select-trigger {
-  padding: 10px 40px 10px 12px;
-  border: 1px solid #d9e2ee;
-  border-radius: 8px;
-  font-size: 14px;
-  background-color: #fff;
-  color: #374151;
   cursor: pointer;
   position: relative;
   transition: all 0.2s ease;
-  min-height: 40px;
-  display: flex;
-  align-items: center;
-}
-
-.custom-select-trigger:hover {
-  background-color: #f9fafb;
-  border-color: #cbd5e1;
 }
 
 .custom-select-trigger:after {
   content: "";
   position: absolute;
-  right: 12px;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
   width: 16px;
@@ -927,6 +929,17 @@ min-width:220px;
   margin: 16px 0;
 }
 
+/* Card Header Alignment */
+.card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
 .inline-group {
   display: flex;
   align-items: center;
@@ -934,14 +947,38 @@ min-width:220px;
 }
 
 .inline-group input, 
-.inline-group .custom-select-wrapper {
-  flex: 1;
-  margin-bottom: 0;
+.inline-group .custom-select-wrapper,
+.inline-group .custom-select-trigger,
+.inline-group .btn {
+  height: 48px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
 }
 
 .inline-group .btn {
-  margin: 0;
   flex-shrink: 0;
+  padding: 0 24px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  min-width: 150px !important; /* Ensure consistent width for all save buttons */
+}
+
+.inline-group input {
+  flex: 1;
+  padding: 0 16px !important;
+  line-height: normal !important;
+}
+
+.inline-group .custom-select-wrapper {
+  flex: 1;
+}
+
+.inline-group .custom-select-trigger {
+  padding: 0 40px 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 @media (max-width: 480px) {
