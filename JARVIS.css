@@ -374,8 +374,17 @@ select:focus, input:focus {
 /* Custom Select Dropdown Styling */
 .custom-select-wrapper {
   position: relative;
-  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
 }
+
+/* Ensure full width in zcontrols on mobile still works */
+@media (max-width: 480px) {
+  .zcontrols .custom-select-wrapper {
+    width: 100%;
+  }
+}
+
 
 .custom-select-trigger {
   padding: 10px 40px 10px 12px;
