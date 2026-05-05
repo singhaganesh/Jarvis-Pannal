@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="JARVIS.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JARVIS WEBSERVER</title>
+  
+</head>
+<body>
+<!-- Sidebar Overlay for Mobile -->
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<header class="topbar">
+  <div class="left">
+    <button id="menuBtn" class="menu-toggle" aria-label="Toggle Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+    <!--<img src="logo.svg" alt="JARVIS Logo" class="logo">-->
+    <h1>JARVIS WEBSERVER</h1>
+  </div>
+  <div class="logout-btn-container">
+    <button id="logoutBtn" class="logout-icon-fixed" title="Logout" onclick="window.location.href = '/'">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Status Bar - Full Width Below Header -->
+<div id="statusBar" class="statusbar">
+  <div class="badge" id="st_ComIP">ComIP: -</div>
+  <div class="badge" id="st_WiFi">WiFi: -</div>
+  <div class="badge" id="st_LAN">LAN: -</div>
+  <div class="badge" id="st_GSM">GSM: -</div>
+  <div class="badge" id="st_Battery">Battery: -</div>
+  <div class="badge" id="st_M_Siren">M.Siren: -</div>
+  <div class="badge" id="st_Siren">Siren: -</div>
+  <div class="badge" id="st_Power">Power: -</div>
+  <div class="badge" id="st_Mode">Mode: -</div>
+  <div class="badge" id="st_Tamp">Tamp: -</div>
+  <div class="badge" id="st_System">System: -</div>
+</div>
+
+<div class="container">
+    <aside id="sidebar" class="sidebar">
+      <nav>
+        <button class="navbtn active" data-section="zone"><i class="fa-solid fa-layer-group"></i> Zone Control & Status</button>
+        <button class="navbtn" data-section="system"><i class="fa-solid fa-gear"></i> System Configuration</button>
+        <button class="navbtn" data-section="zonetime"><i class="fa-solid fa-clock"></i> Zone Time Configuration</button>
+        <button class="navbtn" data-section="gsm"><i class="fa-solid fa-signal"></i> GSM Setting & Monitoring</button>
+        <button class="navbtn" data-section="recplay"><i class="fa-solid fa-microphone"></i> REC & PLAY MSG</button>
+        <button class="navbtn" data-section="eventview"><i class="fa-solid fa-list-check"></i> Event View</button>
+        <button class="navbtn" data-section="contactview"><i class="fa-solid fa-address-book"></i> Contact View</button>
+        <button class="navbtn" data-section="holidaylist"><i class="fa-solid fa-calendar-days"></i> Holiday List</button>
+        <button class="navbtn" data-section="devicecred"><i class="fa-solid fa-key"></i> Device Credential</button>
+      </nav>
+    </aside>
+
+    <main id="main">
+      <!-- Zone Control & Status -->
+      <section id="zone" class="page active">
+        <h2>Zone Control & Status</h2>
+        <div id="zones" class="zones">
+          <!-- Example zone card repeated by HTML for 5 zones -->
+          <div class="zonecard" data-zone="ZONE01">
+            <div class="zhead">
+              <div class="zonename">ZONE1</div>
+              <div class="zonestatus" data-key="ZONE1_status">OK</div>
+            </div>
+            <div class="zcontrols">
+              <button class="btn emcp" data-cmd="EMCP">EMCP</button>
+              <select class="modeSelect">
+                <option value="">--Mode--</option>
+                <option>ISOLATE</option>
+                <option>DAY</option>
+                <option>NIGHT</option>
+                <option>FIRE</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="zonecard" data-zone="ZONE02">
+            <div class="zhead">
+              <div class="zonename">ZONE2</div>
+              <div class="zonestatus" data-key="ZONE2_status">OK</div>
+            </div>
+            <div class="zcontrols">
+              <button class="btn emcp" data-cmd="EMCP">EMCP</button>
+              <select class="modeSelect">
+                <option value="">--Mode--</option>
+                <option>ISOLATE</option>
+                <option>DAY</option>
+                <option>NIGHT</option>
+                <option>FIRE</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="zonecard" data-zone="ZONE03">
+            <div class="zhead">
+              <div class="zonename">ZONE3</div>
+              <div class="zonestatus" data-key="ZONE3_status">OK</div>
+            </div>
+            <div class="zcontrols">
+              <button class="btn emcp" data-cmd="EMCP">EMCP</button>
+              <select class="modeSelect">
+                <option value="">--Mode--</option>
+                <option>ISOLATE</option>
+                <option>DAY</option>
+                <option>NIGHT</option>
+                <option>FIRE</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="zonecard" data-zone="ZONE04">
+            <div class="zhead">
+              <div class="zonename">ZONE4</div>
+              <div class="zonestatus" data-key="ZONE4_status">OK</div>
+            </div>
+            <div class="zcontrols">
+              <button class="btn emcp" data-cmd="EMCP">EMCP</button>
+              <select class="modeSelect">
+                <option value="">--Mode--</option>
+                <option>ISOLATE</option>
+                <option>DAY</option>
+                <option>NIGHT</option>
+                <option>FIRE</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="zonecard" data-zone="ZONE05">
+            <div class="zhead">
+              <div class="zonename">ZONE5</div>
+              <div class="zonestatus" data-key="ZONE5_status">OK</div>
+            </div>
+            <div class="zcontrols">
+              <button class="btn emcp" data-cmd="EMCP">EMCP</button>
+              <select class="modeSelect">
+                <option value="">--Mode--</option>
+                <option>ISOLATE</option>
+                <option>DAY</option>
+                <option>NIGHT</option>
+                <option>FIRE</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="zonecard" data-zone="ZONE06">
+            <div class="zhead">
+              <div class="zonename">ZONE6</div>
+              <div class="zonestatus" data-key="ZONE6_status">OK</div>
+            </div>
+            <div class="zcontrols">
+              <button class="btn emcp" data-cmd="EMCP">EMCP</button>
+              <select class="modeSelect">
+                <option value="">--Mode--</option>
+                <option>ISOLATE</option>
+                <option>DAY</option>
+                <option>NIGHT</option>
+                <option>FIRE</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="zonecard" data-zone="ZONE07">
+            <div class="zhead">
+              <div class="zonename">ZONE7</div>
+              <div class="zonestatus" data-key="ZONE7_status">OK</div>
+            </div>
+            <div class="zcontrols">
+              <button class="btn emcp" data-cmd="EMCP">EMCP</button>
+              <select class="modeSelect">
+                <option value="">--Mode--</option>
+                <option>ISOLATE</option>
+                <option>DAY</option>
+                <option>NIGHT</option>
+                <option>FIRE</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="zonecard" data-zone="ZONE08">
+            <div class="zhead">
+              <div class="zonename">ZONE8</div>
+              <div class="zonestatus" data-key="ZONE8_status">OK</div>
+            </div>
+            <div class="zcontrols">
+              <button class="btn emcp" data-cmd="EMCP">EMCP</button>
+              <select class="modeSelect">
+                <option value="">--Mode--</option>
+                <option>ISOLATE</option>
+                <option>DAY</option>
+                <option>NIGHT</option>
+                <option>FIRE</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- System Configuration -->
+      <section id="system" class="page">
+        <h2>System Configuration</h2>
+
+        <div class="card">
+          <label>Set Date & Time</label>
+          <input type="datetime-local" id="sysDatetime" />
+          <button id="saveTime" class="btn">Save Time</button>
+        </div>
+
+        <div class="card">
+              <h3>Protocol</h3>
+              <select id="protocol">
+                <option>SIA</option>
+                <option>Contact ID</option>
+              </select>
+              <button id="saveProtocol" class="btn">Save Protocol</button>
+            </div>
+            
+            <div class="card">
+              <h3>Notification Type</h3>
+              <div class="notify-group">
+                <label><input type="checkbox" class="notifCheck" value="CALL"> CALL</label>
+                <label><input type="checkbox" class="notifCheck" value="SMS"> SMS</label>
+                <label><input type="checkbox" class="notifCheck" value="EMAIL"> EMAIL</label>
+              </div>
+              <button id="saveNotification" class="btn">Save Notification</button>
+         </div>
+
+        <div class="card">
+          <h3>Add Number</h3>
+          <select id="numType"><option>FIRE</option><option>INTR</option></select>
+          <input id="numSerial" placeholder="Serial No" />
+          <input id="numPhone" placeholder="Phone number" />
+          <input id="numEmail" placeholder="Email (optional)" />
+          <button id="saveNumber" class="btn">Save Number</button>
+        </div>
+
+        <div class="card">
+          <h3>Add Branch Details</h3>
+          <input id="branchName" placeholder="Branch name" />
+          <input id="branchAddr" placeholder="Address" />
+          <button id="saveBranch" class="btn">Save Branch</button>
+        </div>
+
+        <div class="card">
+          <h3>OTA</h3>
+          <button id="otaCheck" class="btn">Check</button>
+          <button id="otaUpdate" class="btn" disabled>Update</button>
+        </div>
+      </section>
+
+      <!-- Zone Time Configuration -->
+      <section id="zonetime" class="page">
+  <h2>Zone Time Configuration</h2>
+
+  <div class="card">
+    <label>Day/Night Mode</label>
+
+    <div class="inline">
+      <span class="small-label">Mode:</span>
+      <select id="panelDNModeSelect">
+        <option value="AUTO">Automatic</option>
+        <option value="MANUAL">Manual</option>
+      </select>
+    </div>
+  <!--  <div class="inline">
+      <span class="small-label">Mode:</span>
+      <select id="DNModeSelect">
+        <option value="DAY">DAY</option>
+        <option value="NIGHT">NIGHT</option>
+      </select>
+    </div>-->
+    <div class="inline">
+      <span class="small-label">Day Time:</span>
+      <input type="time" id="DAY_TIME">
+    </div>
+
+    <div class="inline">
+      <span class="small-label">Night Time:</span>
+      <input type="time" id="NIGHT_TIME">
+    </div>
+
+    <button id="saveZoneTime" class="btn">Save</button>
+  </div>
+  <!-- ARM/DARM Mode -->
+<div class="card">
+    <label>ARM/DISARM Mode</label>
+    <div class="inline">
+      <span class="small-label">Mode:</span>
+      <select id="ARM_DARMModeSelect">
+        <option value="AUTO">Automatic</option>
+        <option value="MANUAL">Manual</option>
+      </select>
+    </div>
+
+    <div class="inline">
+      <span class="small-label">ARM Time:</span>
+      <input type="time" id="ARM_TIME">
+    </div>
+
+    <div class="inline">
+      <span class="small-label">DISARM Time:</span>
+      <input type="time" id="DARM_TIME">
+    </div>
+
+    <button id="saveA_DZoneTime" class="btn">Save</button>
+  </div>
+  
+  <!-- Night Cut Trigger and Sounder time -->
+<div class="card">
+    <label>Night Cut</label>
+    <div class="inline">
+      <span class="small-label">Trigger:</span>
+      <select id="NightCutSelect">
+        <option value="ENABLE">ENABLE</option>
+        <option value="DISABLE">DISABLE</option>
+      </select>
+    </div>
+
+    <div class="inline">
+      <span class="small-label">Sounder Time:</span>
+      <input type="number" id="Sounder_TIME" min="0" max="120">
+      <span>minute</span>
+    </div>
+
+    <button id="SaveSounderTime" class="btn">Save</button>
+  </div>
+  
+  <div class="card">
+    <label>ARM / DISARM</label>
+    <div class="inline">
+      <label><input type="radio" name="armMode" value="ARM"> ARM</label>
+      <label><input type="radio" name="armMode" value="DISARM"> DISARM</label>
+      <button id="saveArmDisarm" class="btn">Save</button>
+    </div>
+  </div>
+</section>
+
+<!-- GSM Setting & Monitoring -->
+<section id="gsm" class="page">
+  <h2>GSM Setting & Monitoring</h2>
+
+  <div class="card" style="display:flex; gap:20px;">
+
+    <!-- LEFT DIV : GSM SETTINGS -->
+    <div style="width:50%;">
+      <div class="pair">
+        <div class="pairhead">APN</div>
+        <input id="gsm_apn" placeholder="Enter APN">
+        <button id="saveGsmApn" class="btn">Save</button>
+      </div>
+
+      <div class="pair" style="margin-top:15px;">
+        <button id="gsmReset" class="btn rec">GSM Reset</button>
+      </div>
+    </div>
+
+    <!-- RIGHT DIV : GSM MONITORING (ESP32 DATA ONLY) -->
+    <div style="width:50%;">
+      <div class="pair">
+        <div class="pairhead">Signal</div>
+        <div id="gsmSignal" class="signal-bars">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="pair">
+        <div class="pairhead">Operator</div>
+        <div id="gsmOperator">--</div>
+      </div>
+
+      <div class="pair">
+        <div class="pairhead">MQTT</div>
+        <div id="gsmMqtt">--</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+      <!-- REC & PLAY MSG -->
+      <section id="recplay" class="page">
+        <h2>REC & PLAY MSG</h2>
+        <div class="card pair" data-slot="FIRE">
+          <div class="pairhead">FIRE</div>
+          <button class="btn rec">REC FIRE</button>
+          <button class="btn play">PLAY FIRE</button>
+        </div>
+
+        <div class="card pair" data-slot="INTR">
+          <div class="pairhead">INTR</div>
+          <button class="btn rec">REC INTR</button>
+          <button class="btn play">PLAY INTR</button>
+        </div>
+
+        <div class="card pair" data-slot="MSG3">
+          <div class="pairhead">MSG3</div>
+          <button class="btn rec">REC MSG3</button>
+          <button class="btn play">PLAY MSG3</button>
+        </div>
+
+        <div class="card pair" data-slot="MSG4">
+          <div class="pairhead">MSG4</div>
+          <button class="btn rec">REC MSG4</button>
+          <button class="btn play">PLAY MSG4</button>
+        </div>
+      </section>
+
+      <!-- Event View -->
+<section id="eventview" class="page">
+  <h2>Event View</h2>
+  <div class="card">
+    <button id="refreshEvent" class="btn">Refresh</button>
+    <div id="eventTable" class="tableBox">Loading...</div>
+  </div>
+</section>
+
+<!-- Contact View -->
+<section id="contactview" class="page">
+  <h2>Contact View</h2>
+  <div class="card">
+
+    <!-- 🔥 Fire / INTR Toggle Buttons -->
+    <div style="margin-bottom:10px;">
+      <button id="showFire" class="btn small">FIRE Numbers</button>
+      <button id="showIntr" class="btn small">INTR Numbers</button>
+    </div>
+
+    <div id="contactTable" class="tableBox">Select Type...</div>
+  </div>
+</section>
+
+<!-- Holiday List -->
+<section id="holidaylist" class="page">
+  <h2>Holiday List</h2>
+  <div class="card">
+    <button id="refreshHoliday" class="btn">Refresh</button>
+    <div id="holidayTable" class="tableBox">Loading...</div>
+  </div>
+</section>
+
+<!-- Device Credential -->
+<section id="devicecred" class="page">
+  <h2>Device Credential</h2>
+
+  <div class="card">
+    <h3>MQTT Credential</h3>
+    <input id="mqttAuth" placeholder="Auth Key">
+    <input id="mqttUser" placeholder="Username">
+    <input id="mqttPass" placeholder="Password" type="password">
+    <button id="saveMqtt" class="btn">Save MQTT</button>
+  </div>
+
+  <div class="card">
+    <h3>WiFi Credential</h3>
+    <input id="wifiSsid" placeholder="WiFi SSID">
+    <input id="wifiPass" placeholder="WiFi Password" type="password">
+    <button id="saveWifi" class="btn">Save WiFi</button>
+  </div>
+</section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+<script src="JARVIS.js"></script>
+</body>
+</html>
