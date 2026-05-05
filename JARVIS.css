@@ -378,6 +378,25 @@ select:focus, input:focus {
   vertical-align: middle;
 }
 
+.custom-select-wrapper.open {
+  z-index: 1000;
+}
+
+/* Ensure the card with the open dropdown is on top of siblings */
+.card:has(.custom-select-wrapper.open),
+.zonecard:has(.custom-select-wrapper.open) {
+  position: relative;
+  z-index: 1001;
+}
+
+/* Fallback for browsers without :has() support or for better specificity */
+.card.has-open-dropdown,
+.zonecard.has-open-dropdown {
+  position: relative;
+  z-index: 1001;
+}
+
+
 /* Ensure full width in zcontrols on mobile still works */
 @media (max-width: 480px) {
   .zcontrols .custom-select-wrapper {
