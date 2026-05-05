@@ -721,6 +721,85 @@ document.addEventListener('DOMContentLoaded', function() {
   updateResponsiveClass();
   window.addEventListener('resize', updateResponsiveClass);
 
+  // ===== CUSTOM SELECT DROPDOWNS =====
+  function initCustomSelects() {
+    const selects = document.querySelectorAll('select');
+    
+    selects.forEach(select => {
+      // Skip if already initialized
+      if (select.parentElement.classList.contains('custom-select-wrapper')) return;
+      
+      const wrapper = document.createElement('div');
+      wrapper.className = 'custom-select-wrapper';
+      if (select.className) wrapper.classList.add(...select.classList);
+      
+      const trigger = document.createElement('div');
+      trigger.className = 'custom-select-trigger';
+      trigger.textContent = select.options[select.selectedIndex]?.textContent || '--Select--';
+      
+      const optionsContainer = document.createElement('div');
+      optionsContainer.className = 'custom-select-options';
+      
+      // Build custom options
+      Array.from(select.options).forEach((option, index) => {
+        const customOption = document.createElement('div');
+        customOption.className = 'custom-option';
+        if (index === select.selectedIndex) customOption.classList.add('selected');
+        customOption.textContent = option.textContent;
+        customOption.dataset.value = option.value;
+        
+        customOption.addEventListener('click', () => {
+          // Update native select
+          select.value = option.value;
+          
+          // Update UI
+          trigger.textContent = option.textContent;
+          wrapper.querySelectorAll('.custom-option').forEach(opt => opt.classList.remove('selected'));
+          customOption.classList.add('selected');
+          
+          // Close dropdown
+          wrapper.classList.remove('open');
+          
+          // Trigger native change event
+          select.dispatchEvent(new Event('change'));
+        });
+        
+        optionsContainer.appendChild(customOption);
+      });
+      
+      // Wrap the select
+      select.parentNode.insertBefore(wrapper, select);
+      wrapper.appendChild(select);
+      wrapper.appendChild(trigger);
+      wrapper.appendChild(optionsContainer);
+      
+      // Hide native select but keep it functional for logic
+      select.style.display = 'none';
+      
+      // Toggle dropdown
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Close other dropdowns first
+        document.querySelectorAll('.custom-select-wrapper').forEach(w => {
+          if (w !== wrapper) w.classList.remove('open');
+        });
+        wrapper.classList.toggle('open');
+      });
+    });
+  }
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.custom-select-wrapper').forEach(w => w.classList.remove('open'));
+  });
+
+  // Initialize on load
+  initCustomSelects();
+
+  // Watch for dynamic DOM changes (like Event Table or Contact Table)
+  const observer = new MutationObserver(() => initCustomSelects());
+  observer.observe(document.body, { childList: true, subtree: true });
+
   // ===== ZONE CARD CONTROLS =====
   const zoneCards = document.querySelectorAll('.zonecard');
   
