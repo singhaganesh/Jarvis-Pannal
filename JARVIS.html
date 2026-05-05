@@ -427,10 +427,9 @@
 <section id="gsm" class="page">
   <h2>GSM Setting & Monitoring</h2>
 
-  <div class="card" style="display:flex; gap:20px;">
-
-    <!-- LEFT DIV : GSM SETTINGS -->
-    <div style="width:50%;">
+  <div class="config-grid">
+    <!-- LEFT CARD : GSM SETTINGS -->
+    <div class="card">
       <div class="pair">
         <h3><svg class="icon-inline"><use href="#icon-gsm"></use></svg> APN</h3>
         <input id="gsm_apn" placeholder="Enter APN">
@@ -442,29 +441,26 @@
       </div>
     </div>
 
-    <!-- RIGHT DIV : GSM MONITORING (ESP32 DATA ONLY) -->
-    <div style="width:50%;">
-      <div class="pair">
-        <h3><svg class="icon-inline"><use href="#icon-terminal"></use></svg> Status</h3>
-        <div class="monitor-item">
-          <span class="small-label">Signal:</span>
-          <div id="gsmSignal" class="signal-bars">
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-        </div>
-
-        <div class="monitor-item">
-          <span class="small-label">Operator:</span>
-          <div id="gsmOperator">--</div>
-        </div>
-
-        <div class="monitor-item">
-          <span class="small-label">MQTT:</span>
-          <div id="gsmMqtt">--</div>
+    <!-- RIGHT CARD : GSM MONITORING -->
+    <div class="card">
+      <h3><svg class="icon-inline"><use href="#icon-terminal"></use></svg> Status</h3>
+      <div class="monitor-item">
+        <span class="small-label">Signal:</span>
+        <div id="gsmSignal" class="signal-bars">
+          <span></span><span></span><span></span><span></span><span></span>
         </div>
       </div>
-    </div>
 
+      <div class="monitor-item">
+        <span class="small-label">Operator:</span>
+        <div id="gsmOperator">--</div>
+      </div>
+
+      <div class="monitor-item">
+        <span class="small-label">MQTT:</span>
+        <div id="gsmMqtt">--</div>
+      </div>
+    </div>
   </div>
 </section>
 
