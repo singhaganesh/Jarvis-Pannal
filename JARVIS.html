@@ -209,51 +209,53 @@
       <section id="system" class="page">
         <h2>System Configuration</h2>
 
-        <div class="card">
-          <label>Set Date & Time</label>
-          <input type="datetime-local" id="sysDatetime" />
-          <button id="saveTime" class="btn">Save Time</button>
-        </div>
+        <div class="config-grid">
+          <div class="card">
+            <label>Set Date & Time</label>
+            <input type="datetime-local" id="sysDatetime" />
+            <button id="saveTime" class="btn">Save Time</button>
+          </div>
 
-        <div class="card">
-              <h3>Protocol</h3>
-              <select id="protocol">
-                <option>SIA</option>
-                <option>Contact ID</option>
-              </select>
-              <button id="saveProtocol" class="btn">Save Protocol</button>
-            </div>
-            
-            <div class="card">
-              <h3>Notification Type</h3>
-              <div class="notify-group">
-                <label><input type="checkbox" class="notifCheck" value="CALL"> CALL</label>
-                <label><input type="checkbox" class="notifCheck" value="SMS"> SMS</label>
-                <label><input type="checkbox" class="notifCheck" value="EMAIL"> EMAIL</label>
+          <div class="card">
+                <h3>Protocol</h3>
+                <select id="protocol">
+                  <option>SIA</option>
+                  <option>Contact ID</option>
+                </select>
+                <button id="saveProtocol" class="btn">Save Protocol</button>
               </div>
-              <button id="saveNotification" class="btn">Save Notification</button>
-         </div>
+              
+              <div class="card">
+                <h3>Notification Type</h3>
+                <div class="notify-group">
+                  <label><input type="checkbox" class="notifCheck" value="CALL"> CALL</label>
+                  <label><input type="checkbox" class="notifCheck" value="SMS"> SMS</label>
+                  <label><input type="checkbox" class="notifCheck" value="EMAIL"> EMAIL</label>
+                </div>
+                <button id="saveNotification" class="btn">Save Notification</button>
+          </div>
 
-        <div class="card">
-          <h3>Add Number</h3>
-          <select id="numType"><option>FIRE</option><option>INTR</option></select>
-          <input id="numSerial" placeholder="Serial No" />
-          <input id="numPhone" placeholder="Phone number" />
-          <input id="numEmail" placeholder="Email (optional)" />
-          <button id="saveNumber" class="btn">Save Number</button>
-        </div>
+          <div class="card">
+            <h3>Add Number</h3>
+            <select id="numType"><option>FIRE</option><option>INTR</option></select>
+            <input id="numSerial" placeholder="Serial No" />
+            <input id="numPhone" placeholder="Phone number" />
+            <input id="numEmail" placeholder="Email (optional)" />
+            <button id="saveNumber" class="btn">Save Number</button>
+          </div>
 
-        <div class="card">
-          <h3>Add Branch Details</h3>
-          <input id="branchName" placeholder="Branch name" />
-          <input id="branchAddr" placeholder="Address" />
-          <button id="saveBranch" class="btn">Save Branch</button>
-        </div>
+          <div class="card">
+            <h3>Add Branch Details</h3>
+            <input id="branchName" placeholder="Branch name" />
+            <input id="branchAddr" placeholder="Address" />
+            <button id="saveBranch" class="btn">Save Branch</button>
+          </div>
 
-        <div class="card">
-          <h3>OTA</h3>
-          <button id="otaCheck" class="btn">Check</button>
-          <button id="otaUpdate" class="btn" disabled>Update</button>
+          <div class="card">
+            <h3>OTA</h3>
+            <button id="otaCheck" class="btn">Check</button>
+            <button id="otaUpdate" class="btn" disabled>Update</button>
+          </div>
         </div>
       </section>
 
