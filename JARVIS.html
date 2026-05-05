@@ -327,90 +327,101 @@
 
       <!-- Zone Time Configuration -->
       <section id="zonetime" class="page">
-  <h2>Zone Time Configuration</h2>
+        <h2>Zone Time Configuration</h2>
 
-  <div class="card">
-    <label>Day/Night Mode</label>
+        <div class="config-grid">
+          <div class="card">
+            <h3><svg class="icon-inline"><use href="#icon-clock"></use></svg> Day/Night Mode</h3>
 
-    <div class="inline">
-      <span class="small-label">Mode:</span>
-      <select id="panelDNModeSelect">
-        <option value="AUTO">Automatic</option>
-        <option value="MANUAL">Manual</option>
-      </select>
-    </div>
-  <!--  <div class="inline">
-      <span class="small-label">Mode:</span>
-      <select id="DNModeSelect">
-        <option value="DAY">DAY</option>
-        <option value="NIGHT">NIGHT</option>
-      </select>
-    </div>-->
-    <div class="inline">
-      <span class="small-label">Day Time:</span>
-      <input type="time" id="DAY_TIME">
-    </div>
+            <div class="inline">
+              <span class="small-label">Mode:</span>
+              <select id="panelDNModeSelect">
+                <option value="AUTO">Automatic</option>
+                <option value="MANUAL">Manual</option>
+              </select>
+            </div>
+            <div class="inline">
+              <span class="small-label">Day Time:</span>
+              <input type="time" id="DAY_TIME">
+            </div>
 
-    <div class="inline">
-      <span class="small-label">Night Time:</span>
-      <input type="time" id="NIGHT_TIME">
-    </div>
+            <div class="inline">
+              <span class="small-label">Night Time:</span>
+              <input type="time" id="NIGHT_TIME">
+            </div>
 
-    <button id="saveZoneTime" class="btn">Save</button>
-  </div>
-  <!-- ARM/DARM Mode -->
-<div class="card">
-    <label>ARM/DISARM Mode</label>
-    <div class="inline">
-      <span class="small-label">Mode:</span>
-      <select id="ARM_DARMModeSelect">
-        <option value="AUTO">Automatic</option>
-        <option value="MANUAL">Manual</option>
-      </select>
-    </div>
+            <button id="saveZoneTime" class="btn">Save</button>
+          </div>
 
-    <div class="inline">
-      <span class="small-label">ARM Time:</span>
-      <input type="time" id="ARM_TIME">
-    </div>
+          <!-- ARM/DARM Mode -->
+          <div class="card">
+            <h3><svg class="icon-inline"><use href="#icon-shield"></use></svg> ARM/DISARM Mode</h3>
+            <div class="inline">
+              <span class="small-label">Mode:</span>
+              <select id="ARM_DARMModeSelect">
+                <option value="AUTO">Automatic</option>
+                <option value="MANUAL">Manual</option>
+              </select>
+            </div>
 
-    <div class="inline">
-      <span class="small-label">DISARM Time:</span>
-      <input type="time" id="DARM_TIME">
-    </div>
+            <div class="inline">
+              <span class="small-label">ARM Time:</span>
+              <input type="time" id="ARM_TIME">
+            </div>
 
-    <button id="saveA_DZoneTime" class="btn">Save</button>
-  </div>
-  
-  <!-- Night Cut Trigger and Sounder time -->
-<div class="card">
-    <label>Night Cut</label>
-    <div class="inline">
-      <span class="small-label">Trigger:</span>
-      <select id="NightCutSelect">
-        <option value="ENABLE">ENABLE</option>
-        <option value="DISABLE">DISABLE</option>
-      </select>
-    </div>
+            <div class="inline">
+              <span class="small-label">DISARM Time:</span>
+              <input type="time" id="DARM_TIME">
+            </div>
 
-    <div class="inline">
-      <span class="small-label">Sounder Time:</span>
-      <input type="number" id="Sounder_TIME" min="0" max="120">
-      <span>minute</span>
-    </div>
+            <button id="saveA_DZoneTime" class="btn">Save</button>
+          </div>
+          
+          <!-- Night Cut Trigger and Sounder time -->
+          <div class="card">
+            <h3><svg class="icon-inline"><use href="#icon-mute"></use></svg> Night Cut</h3>
+            <div class="inline">
+              <span class="small-label">Trigger:</span>
+              <select id="NightCutSelect">
+                <option value="ENABLE">ENABLE</option>
+                <option value="DISABLE">DISABLE</option>
+              </select>
+            </div>
 
-    <button id="SaveSounderTime" class="btn">Save</button>
-  </div>
-  
-  <div class="card">
-    <label>ARM / DISARM</label>
-    <div class="inline">
-      <label><input type="radio" name="armMode" value="ARM"> ARM</label>
-      <label><input type="radio" name="armMode" value="DISARM"> DISARM</label>
-      <button id="saveArmDisarm" class="btn">Save</button>
-    </div>
-  </div>
-</section>
+            <div class="inline">
+              <span class="small-label">Sounder Time:</span>
+              <input type="number" id="Sounder_TIME" min="0" max="120">
+              <span>minute</span>
+            </div>
+
+            <button id="SaveSounderTime" class="btn">Save</button>
+          </div>
+          
+          <div class="card">
+            <h3><svg class="icon-inline"><use href="#icon-shield"></use></svg> ARM / DISARM</h3>
+            <div class="notify-grid">
+              <label class="notify-card">
+                <input type="radio" name="armMode" value="ARM">
+                <div class="notify-card-content">
+                  <svg class="notify-icon"><use href="#icon-shield"></use></svg>
+                  <span class="notify-label">ARM</span>
+                  <div class="notify-checkbox-custom radio"></div>
+                </div>
+              </label>
+
+              <label class="notify-card">
+                <input type="radio" name="armMode" value="DISARM">
+                <div class="notify-card-content">
+                  <svg class="notify-icon"><use href="#icon-ban"></use></svg>
+                  <span class="notify-label">DISARM</span>
+                  <div class="notify-checkbox-custom radio"></div>
+                </div>
+              </label>
+            </div>
+            <button id="saveArmDisarm" class="btn">Save</button>
+          </div>
+        </div>
+      </section>
 
 <!-- GSM Setting & Monitoring -->
 <section id="gsm" class="page">
@@ -421,7 +432,7 @@
     <!-- LEFT DIV : GSM SETTINGS -->
     <div style="width:50%;">
       <div class="pair">
-        <div class="pairhead">APN</div>
+        <h3><svg class="icon-inline"><use href="#icon-gsm"></use></svg> APN</h3>
         <input id="gsm_apn" placeholder="Enter APN">
         <button id="saveGsmApn" class="btn">Save</button>
       </div>
@@ -434,24 +445,23 @@
     <!-- RIGHT DIV : GSM MONITORING (ESP32 DATA ONLY) -->
     <div style="width:50%;">
       <div class="pair">
-        <div class="pairhead">Signal</div>
-        <div id="gsmSignal" class="signal-bars">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+        <h3><svg class="icon-inline"><use href="#icon-terminal"></use></svg> Status</h3>
+        <div class="monitor-item">
+          <span class="small-label">Signal:</span>
+          <div id="gsmSignal" class="signal-bars">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
         </div>
-      </div>
 
-      <div class="pair">
-        <div class="pairhead">Operator</div>
-        <div id="gsmOperator">--</div>
-      </div>
+        <div class="monitor-item">
+          <span class="small-label">Operator:</span>
+          <div id="gsmOperator">--</div>
+        </div>
 
-      <div class="pair">
-        <div class="pairhead">MQTT</div>
-        <div id="gsmMqtt">--</div>
+        <div class="monitor-item">
+          <span class="small-label">MQTT:</span>
+          <div id="gsmMqtt">--</div>
+        </div>
       </div>
     </div>
 
@@ -461,28 +471,38 @@
       <!-- REC & PLAY MSG -->
       <section id="recplay" class="page">
         <h2>REC & PLAY MSG</h2>
-        <div class="card pair" data-slot="FIRE">
-          <div class="pairhead">FIRE</div>
-          <button class="btn rec">REC FIRE</button>
-          <button class="btn play">PLAY FIRE</button>
-        </div>
+        <div class="config-grid">
+          <div class="card pair" data-slot="FIRE">
+            <h3><svg class="icon-inline"><use href="#icon-volume-up"></use></svg> FIRE MSG</h3>
+            <div class="inline-group">
+              <button class="btn rec">REC FIRE</button>
+              <button class="btn play">PLAY FIRE</button>
+            </div>
+          </div>
 
-        <div class="card pair" data-slot="INTR">
-          <div class="pairhead">INTR</div>
-          <button class="btn rec">REC INTR</button>
-          <button class="btn play">PLAY INTR</button>
-        </div>
+          <div class="card pair" data-slot="INTR">
+            <h3><svg class="icon-inline"><use href="#icon-volume-up"></use></svg> INTR MSG</h3>
+            <div class="inline-group">
+              <button class="btn rec">REC INTR</button>
+              <button class="btn play">PLAY INTR</button>
+            </div>
+          </div>
 
-        <div class="card pair" data-slot="MSG3">
-          <div class="pairhead">MSG3</div>
-          <button class="btn rec">REC MSG3</button>
-          <button class="btn play">PLAY MSG3</button>
-        </div>
+          <div class="card pair" data-slot="MSG3">
+            <h3><svg class="icon-inline"><use href="#icon-volume-up"></use></svg> MSG3</h3>
+            <div class="inline-group">
+              <button class="btn rec">REC MSG3</button>
+              <button class="btn play">PLAY MSG3</button>
+            </div>
+          </div>
 
-        <div class="card pair" data-slot="MSG4">
-          <div class="pairhead">MSG4</div>
-          <button class="btn rec">REC MSG4</button>
-          <button class="btn play">PLAY MSG4</button>
+          <div class="card pair" data-slot="MSG4">
+            <h3><svg class="icon-inline"><use href="#icon-volume-up"></use></svg> MSG4</h3>
+            <div class="inline-group">
+              <button class="btn rec">REC MSG4</button>
+              <button class="btn play">PLAY MSG4</button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -523,19 +543,21 @@
 <section id="devicecred" class="page">
   <h2>Device Credential</h2>
 
-  <div class="card">
-    <h3>MQTT Credential</h3>
-    <input id="mqttAuth" placeholder="Auth Key">
-    <input id="mqttUser" placeholder="Username">
-    <input id="mqttPass" placeholder="Password" type="password">
-    <button id="saveMqtt" class="btn">Save MQTT</button>
-  </div>
+  <div class="config-grid">
+    <div class="card">
+      <h3><svg class="icon-inline"><use href="#icon-key"></use></svg> MQTT Credential</h3>
+      <input id="mqttAuth" placeholder="Auth Key">
+      <input id="mqttUser" placeholder="Username">
+      <input id="mqttPass" placeholder="Password" type="password">
+      <button id="saveMqtt" class="btn">Save MQTT</button>
+    </div>
 
-  <div class="card">
-    <h3>WiFi Credential</h3>
-    <input id="wifiSsid" placeholder="WiFi SSID">
-    <input id="wifiPass" placeholder="WiFi Password" type="password">
-    <button id="saveWifi" class="btn">Save WiFi</button>
+    <div class="card">
+      <h3><svg class="icon-inline"><use href="#icon-lock"></use></svg> WiFi Credential</h3>
+      <input id="wifiSsid" placeholder="WiFi SSID">
+      <input id="wifiPass" placeholder="WiFi Password" type="password">
+      <button id="saveWifi" class="btn">Save WiFi</button>
+    </div>
   </div>
 </section>
     </main>
