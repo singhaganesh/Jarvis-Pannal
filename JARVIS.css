@@ -289,9 +289,27 @@ main{
 }
 .zcontrols{
   display:flex;
-  gap: 10px;
+  gap: 12px;
   align-items:center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+}
+
+.zcontrols .custom-select-wrapper {
+  flex-grow: 1;
+  min-width: 160px;
+}
+
+.zcontrols .custom-select-trigger {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.zcontrols .btn.emcp {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  flex-shrink: 0;
 }
 
 .btn{
