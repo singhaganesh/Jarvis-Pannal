@@ -919,6 +919,131 @@ border-radius:6px;
 min-width:220px;
 }
 
+/* Notification Setting Visual Cards */
+.notify-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.inline-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.inline-group input, 
+.inline-group .custom-select-wrapper {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.inline-group .btn {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .inline-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.notify-card {
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.notify-card input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.notify-card-content {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.notify-card:hover .notify-card-content {
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.notify-card input:checked ~ .notify-card-content {
+  border-color: var(--accent);
+  background: rgba(255, 167, 38, 0.02);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.notify-icon {
+  width: 32px;
+  height: 32px;
+  stroke: #4b5563;
+  transition: all 0.2s ease;
+}
+
+.notify-card input:checked ~ .notify-card-content .notify-icon {
+  stroke: var(--accent);
+}
+
+.notify-label {
+  font-weight: 600;
+  font-size: 15px;
+  color: #1f2937;
+}
+
+.notify-checkbox-custom {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 4px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.notify-card input:checked ~ .notify-card-content .notify-checkbox-custom {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.notify-card input:checked ~ .notify-card-content .notify-checkbox-custom::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.icon-inline {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+  stroke: currentColor;
+}
+
 /* ===== GSM Section Redesign ===== */
 .gsm-container {
   display: grid;
