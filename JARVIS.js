@@ -211,24 +211,32 @@ if (msg.toLowerCase().startsWith("zone")) {
   const val  = parts[2] || "";      // Fire
 
   // Find element for this zone
-  const sel = document.querySelector(`.zonecard[data-zone="${zone.toUpperCase()}"] .zonestatus`);
-  if (sel) {
+  const card = document.querySelector(`.zonecard[data-zone="${zone.toUpperCase()}"]`);
+  const sel = card ? card.querySelector('.zonestatus') : null;
+  
+  if (card && sel) {
     sel.textContent = `${mode}:${val}`;// show "Day:Fire"
-    // background color based on status
+    // background color and card border based on status
     const status = val.toLowerCase();
+    
     if (status === "trigger") {
-      sel.style.background = "#F44336";  // red
+      card.style.border = "2px solid #F44336"; // Red border for trigger
+      sel.style.background = "#F44336";  // red badge
+      sel.style.color = "#fff";
+    } else if (status === "normal" || status === "ok") {
+      card.style.border = "2px solid #4CAF50"; // Green border for normal
+      sel.style.background = "#4CAF50";  // green badge
       sel.style.color = "#fff";
     } else if (status === "open") {
+      card.style.border = "1px solid #e6e9ef"; // Reset to default border
       sel.style.background = "#FF9800";  // orange
       sel.style.color = "#000";
     } else if (status === "short") {
+      card.style.border = "1px solid #e6e9ef"; // Reset to default border
       sel.style.background = "#E91E63";  // pinkish for short
       sel.style.color = "#fff";
-    } else if (status === "normal" || status === "ok") {
-      sel.style.background = "#4CAF50";  // green
-      sel.style.color = "#fff";
     } else {
+      card.style.border = "1px solid #e6e9ef"; // Reset to default border
       sel.style.background = "#FFA726";  // gray (unknown)
       sel.style.color = "#fff";
     }
@@ -293,14 +301,15 @@ if (msg.startsWith("NUM:")) {
     });
 
     td.appendChild(btn);
-    row.appendChild(td);
+      row.appendChild(td);
 
-  });
+    });
 
-  return;
-}
+    return;
+  }
   console.warn("Unhandled message:", msg);
 }
+window.handleMsg = handleMsg; // Expose for testing
 
   // Zone controls: EMCP and mode select
   qsa('.zonecard').forEach(card=>{
