@@ -196,7 +196,8 @@ let currentContactType = "FIRE";
     const el = qs("#st_System");
     if (el) {
       el.textContent = "System: " + val;
-      el.style.background = (val.toLowerCase() === "darm") ? "#4CAF50" : "#F44336";
+      const status = val.toLowerCase();
+      el.style.background = (status === "connected" || status === "darm") ? "#4CAF50" : "#F44336";
     }
     return;
   }
