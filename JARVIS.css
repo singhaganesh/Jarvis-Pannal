@@ -646,6 +646,45 @@ select:focus, input:focus, .custom-select-wrapper.open .custom-select-trigger {
   background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
 }
 
+/* Contact View Custom Buttons */
+.btn-fire {
+  background: #ffe5e5;
+  color: #d32f2f;
+  border: 1.5px solid #d32f2f;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 12px;
+}
+.btn-fire:hover {
+  background: #ffcdd2;
+  transform: translateY(-1px);
+}
+
+.btn-intr {
+  background: #fff3e0;
+  color: #fb8c00;
+  border: 1.5px solid #fb8c00;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+  font-size: 14px;
+}
+.btn-intr:hover {
+  background: #ffe0b2;
+  transform: translateY(-1px);
+}
+
+
 .tableBox {
   max-height: 400px;
   overflow-y: auto;
